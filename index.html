@@ -18,7 +18,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">-->
 	<script>
 		var req = new XMLHttpRequest();
-		req.open("GET", "http://api.amp.active.com/v2/search/?query=swimming&category=events&near=Houston,TX,US&radius=50&api_key=dh7xyyrxg5pnhb8ruhm23gpj", true);
+		req.open("GET", "http://api.amp.active.com/v2/search/?query=swimming&category=events&near=Houston,TX,US&radius=50&api_key=dh7xyyrxg5pnhb8ruhm23gpj", false);
+		req.set
 		req.send(null);
 		console.log(req.responseText);
 		
