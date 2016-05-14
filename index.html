@@ -19,7 +19,7 @@
 	<script>
 		var req = new XMLHttpRequest();
 		req.open("GET", "http://api.amp.active.com/v2/search?query=triathlon&category=events&near=Houston,TX,US&radius=100&api_key=DH7XYYRXG5PNHB8RUHM23GPJ", false);
-		//req.send(null);
+		req.send();
 		console.log(JSON.parse(req.responseText));
 	
 	</script>
