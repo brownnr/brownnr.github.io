@@ -26,41 +26,38 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-			ACTIVE.com API How-To
-		  </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="navbar-right">
-            <li>
-				<a href="index.html">Home</a>
-            </li>
-			<li role="separator" class="divider"></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="get-started.html">Getting Started</a></li>
-                <li><a href="making-calls.html">Making API Calls</a></li>
-                <li><a href="#">More Fun</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+	<script> 
+	$(document).ready(function () {
+		$.ajax({ 
+			// the URL for the request 
+			url: "http://api.amp.active.com/search", 
+			data: { 
+				v: "json", 
+				near: "houston,tx", 
+				topic: "running",
+				api_key: "dh7xyyrxg5pnhb8ruhm23gpj"
+			},
+			type: "GET",
+			jsonp: "cb",
+			dataType: "jsonp",
+			success: function (json) {
+				var result = json;
+				alert('Success'); 
+			},
+			error: function (xhr, status) {
+				var err = xhr; 
+				alert("Sorry, there was a problem!"); 
+			}, 
+			complete: function (xhr, status) { 
+				// alert("The request is complete!"); 
+			}
+		}); 
+	}); 
+	</script> 
+    
 
     <!-- Main jumbotron -->
-	<script>
+	<!--<script>
 	function callMe(data) {
 		console.log("called");
 	}
@@ -84,39 +81,9 @@
 		  });
 	})();	
 	
-	</script>
+	</script>-->
 
-	<!--<script> $(document).ready(function () { 
-		$.ajax({ 
-			// the URL for the request 
-			url: "http://api.amp.active.com/search", 
-			data: { 
-				v: "json",
-				near: "Houston,TX",
-				topic: "running",
-				api_key: "dh7xyyrxg5pnhb8ruhm23gpj" 
-			}, 
-			type: "GET", 
-			jsonp: "cb", 
-			dataType: "jsonp", 
-			success: function (json) { var result = json; alert('Success'); },
-			error: function (xhr, status) { var err = xhr; alert("Sorry, there was a problem!"); },
-			complete: function (xhr, status) { 
-				// alert("The request is complete!");
-			} 
-		});
-	});
-	</script> -->
 	
-      <hr>
-
-      <footer>
-		<div class="col-md-10">
-			<p>creatively created by Nicholas Brown</p>
-		</div>
-      </footer>
-	  
-    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
