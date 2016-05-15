@@ -17,10 +17,27 @@
 	<!-- Optional theme -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	
-	<script>
-	function logMe(data){
-		console.log(data);
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url: 'http://api.amp.active.com/v2/search/?near=Houston%2CTX&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj',
+			type: 'GET',
+			dataType: 'json',
+			success: function() {console.log("YES");},
+			error: function() {console.log("Boo");},
+			beforeSend: setHeaders
+		});
+	});
+	
+	function setHeaders(xhr) {
+		xhr.setRequestHeader('Content-Type', 'application/json');
 	}
+	
+	
+	
+	
+	
+	
 	</script>
 	
 
@@ -64,10 +81,10 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <script>
+    <!--<script>
 	(function() {
 		var d = "http://api.amp.active.com/v2/search/?cb=?";
-		$.getJSON("http://api.amp.active.com/v2/search/?near=Houston%2CTX&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&cb=?&api_key=dh7xyyrxg5pnhb8ruhm23gpj", function(data) {
+		$.getJSON(d, function(data) {
 		  console.log(data.total_results);
 		 })
 		  .done(function(data) {
@@ -79,7 +96,7 @@
 		  });
 	})();	
 	
-	</script>
+	</script>-->
 
       <hr>
 
