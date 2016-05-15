@@ -17,7 +17,11 @@
 	<!-- Optional theme -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	
-	
+	<script type="text/javascript">
+		function callMe(data){
+			alert('success');
+		}
+	</script>
 	
 
 	
@@ -26,20 +30,14 @@
   </head>
 
   <body>
-	<script type="text/javascript">
-	function callMe(data){
-		alert('success');
-	}
-	</script>
+	
   
 	<script type="text/javascript"> 
-	
-	
-	var url = "http://api.amp.active.com/v2/search?cb=callMe&v=json&topic=running&zip=77450&radius=100&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
-	var scriptBlock = document.createElement('script');
-	scriptBlock.src = url;
-	scriptBlock.type = 'text/javascript';
-	document.getElementsByTagName('head')[0].appendChild(scriptBlock);
+		var url = "http://api.amp.active.com/v2/search?cb=callMe&v=json&topic=running&zip=77450&radius=100&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
+		var scriptBlock = document.createElement('script');
+		scriptBlock.src = url;
+		scriptBlock.type = 'text/javascript';
+		document.getElementsByTagName('head')[0].appendChild(scriptBlock);
 	</script> 
     
 
