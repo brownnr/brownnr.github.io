@@ -68,7 +68,7 @@
 		  topic: 'running',
 		  api_key: 'dh7xyyrxg5pnhb8ruhm23gpj'
 		}, function(data) {
-		  console.log(data.total_results);
+		  console.log(arguments);
 		})
 		  .done(function(data) {
 			console.log(data.total_results);
@@ -76,6 +76,7 @@
 		  .fail(function(jqxhr, textStatus, error) {
 		    var err = textStatus + ", " + error;
 			console.log("Request Failed: " + err);
+			
 		  });
 	})();	
 	
