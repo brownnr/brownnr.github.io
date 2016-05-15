@@ -17,11 +17,11 @@
 	<!-- Optional theme -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	
-	<!--<script type="text/javascript">
+	<script type="text/javascript">
 		function callMe(data){
 			alert('success');
 		}
-	</script>-->
+	</script>
 	
 
 	
@@ -33,11 +33,10 @@
 	
   
 	<script type="text/javascript"> 
-		var url = "http://api.amp.active.com/v2/search?cb=callMe&v=json&topic=running&zip=77450&radius=100&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
+		var url = "http://api.amp.active.com/v2/search?cb=callMe&f=json&topic=running&zip=77450&radius=100&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
 		var scriptBlock = document.createElement('script');
 		scriptBlock.src = url;
 		scriptBlock.type = 'text/javascript';
-		scriptBlock.innerHTML = "function callMe(data){alert('success');}";
 		document.getElementsByTagName('head')[0].appendChild(scriptBlock);
 	</script> 
     
