@@ -19,7 +19,9 @@
 	
 	
 	<script>
-	jQuery.parseJSON("http://api.amp.active.com/v2/search/?query=swimming&category=events&near=Houston,TX,US&radius=50&api_key=dh7xyyrxg5pnhb8ruhm23gpj");
+	var res = "http://api.amp.active.com/v2/search/?query=swimming&category=events&near=Houston,TX,US&radius=50&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
+	
+	jQuery.parseJSON(res.body);
 	
 	
 	</script>
