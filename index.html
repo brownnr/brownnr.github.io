@@ -26,33 +26,18 @@
   </head>
 
   <body>
+	<script>
+	function callMe(data){
+		console.log('success');
+	}
+	</script>
+  
 	<script> 
-	$(document).ready(function () {
-		$.ajax({ 
-			// the URL for the request 
-			url: "http://api.amp.active.com/search", 
-			data: { 
-				v: "json", 
-				near: "houston,tx", 
-				topic: "running",
-				api_key: "dh7xyyrxg5pnhb8ruhm23gpj"
-			},
-			type: "GET",
-			jsonp: "cb",
-			dataType: "jsonp",
-			success: function (json) {
-				var result = json;
-				alert('Success'); 
-			},
-			error: function (xhr, status) {
-				var err = xhr; 
-				alert("Sorry, there was a problem!"); 
-			}, 
-			complete: function (xhr, status) { 
-				// alert("The request is complete!"); 
-			}
-		}); 
-	}); 
+	var url = "http://api.amp.active.com/v2/search/?cb=callMe&k=cycling&l=77450&r=100&v=json&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
+	var scriptBlock = document.createElement('script');
+	scriptBlock.src = url;
+	scriptBlock.type = 'text/javascript';
+	document.getElementsByTagName('head')[0].appendChild(scriptBlock);
 	</script> 
     
 
