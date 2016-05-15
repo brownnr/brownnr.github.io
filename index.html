@@ -17,11 +17,11 @@
 	<!-- Optional theme -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		function callMe(data){
 			alert('success');
 		}
-	</script>
+	</script>-->
 	
 
 	
@@ -37,6 +37,7 @@
 		var scriptBlock = document.createElement('script');
 		scriptBlock.src = url;
 		scriptBlock.type = 'text/javascript';
+		scriptBlock.innerHTML = "function callMe(data){alert('success');}";
 		document.getElementsByTagName('head')[0].appendChild(scriptBlock);
 	</script> 
     
