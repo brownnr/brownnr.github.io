@@ -19,20 +19,18 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$.ajax({
-			url: 'http://api.amp.active.com/v2/search/?near=Houston%2CTX&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj',
-			type: 'GET',
-			dataType: 'json',
-			success: function() {console.log("YES");},
-			error: function() {console.log("Boo");},
-			beforeSend: setHeaders
+		$.ajaxSetup({
+			headers: {
+			  'Content-Type', 'application/json'
+			}
 		});
+		$.getJSON('http://api.amp.active.com/v2/search/?near=Houston%2CTX&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj', function() {console.log("YES");});
 	});
 	
-	function setHeaders(xhr) {
+	/*function setHeaders(xhr) {
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://brownnr.github.io');
-	}
+	}*/
 	
 	
 	
