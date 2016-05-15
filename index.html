@@ -61,13 +61,13 @@
 
     <!-- Main jumbotron -->
 	<script>
-	function callMe(data) {
+	(function callMe(data) {
 		console.log("called");
-	}
+	})
 	</script>
 	
     <script>
-	function() {
+	(function() {
 		var d = "http://api.amp.active.com/v2/search/?cb=?";
 		$.get(d, {
 		  near: 'Houston,TX,US',
@@ -82,7 +82,7 @@
 			console.log("Request Failed: " + err);
 			
 		  });
-	}();	
+	})();	
 	
 	</script>
 
