@@ -63,12 +63,12 @@
     <script>
 	(function() {
 		var d = "http://api.amp.active.com/v2/search/?cb=?";
-		$.getJSON(d, {
+		$.getJSON(d, JSON.stringify({
 		  near: 'Houston,TX,US',
 		  topic: 'running',
 		  api_key: 'dh7xyyrxg5pnhb8ruhm23gpj'
-		}, function(data) {
-		  console.log(arguments);
+		}), function(data) {
+		  console.log('success');
 		})
 		  .done(function(data) {
 			console.log(data.total_results);
