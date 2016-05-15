@@ -60,7 +60,7 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <script>
+    <!--<script>
 	(function() {
 		var d = "http://api.amp.active.com/v2/search/?cb=?";
 		$.getJSON(d, {
@@ -80,8 +80,30 @@
 		  });
 	})();	
 	
-	</script>
+	</script>-->
 
+	<script> $(document).ready(function () { 
+		$.ajax({ 
+			// the URL for the request 
+			url: "http://api.amp.active.com/search", 
+			data: { 
+				l: "98103", 
+				v: "json", 
+				num: 5, 
+				api_key: "wuhmn9ye94xn3xnteudxsavw" 
+			}, 
+			type: "GET", 
+			jsonp: "cb", 
+			dataType: "jsonp", 
+			success: function (json) { var result = json; alert('Success'); },
+			error: function (xhr, status) { var err = xhr; alert("Sorry, there was a problem!"); },
+			complete: function (xhr, status) { 
+				// alert("The request is complete!");
+			} 
+		});
+	});
+	</script> 
+	
       <hr>
 
       <footer>
