@@ -34,7 +34,7 @@
   
 	<script type="text/javascript"> 
 		var req = new XMLHttpRequest();
-		req.open("GET", "/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&location=Katy+TX&radius=100", true);
+		req.open("GET", "https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&location=Katy+TX&radius=100", true);
 		req.addEventListener('load', function(){
 			if(req.status >= 200 && req.status < 400){
 				var res = JSON.parse(req.responseText);
