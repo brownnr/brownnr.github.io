@@ -34,9 +34,9 @@
   
 	<script type="text/javascript"> 
 		var req = new XMLHttpRequest();
-		req.open("GET", "http://api.amp.active.com/v2/search?v=json&near=houston%2Ctx&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj", false);
-		req.send(null);
-		console.log(JSON.parse(req.responseText));
+		//req.open("GET", "http://api.amp.active.com/v2/search?v=json&near=houston%2Ctx&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj", false);
+		//req.send(null);
+		console.log(JSON.parse(req.open("GET", "http://api.amp.active.com/v2/search?v=json&near=houston%2Ctx&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj", false)));
 	
 		/*var url = "http://api.amp.active.com/v2/search?v=json&near=houston%2Ctx&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj";
 		var scriptBlock = document.createElement('script');
