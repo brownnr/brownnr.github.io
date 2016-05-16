@@ -20,7 +20,8 @@
 	
     <!-- Custom styles for this template -->
 	<link href="css/main.css" rel="stylesheet">
-	<link href="css/index.css" rel="stylesheet">
+	<link href="css/general.css" rel="stylesheet">
+	<link href="css/making-calls.css" rel="stylesheet">
 
   </head>
 
@@ -59,42 +60,61 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <div class="jumbotron" style="background-image: url(images/home.jpg)">
+    <div class="jumbotron" style="background-image: url(images/calls.jpg)">
       <div class="container">
-        <p>This is a how-to guide that will walk you through setting up, and using, the ACTIVE.com API to help visitors to your site find activities.</p>
+        <h1>Making API Calls</h1>
 		<hr class="small">
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-		<div class="col-md-2">
-			<img src="images/A-icon.png">
-		</div>
         <div class="col-md-10">
-          <p class="intro-p">The <a href="http://developer.active.com/apis" class="api-link">ACTIVE.com API</a> allows you to find activities that interest you, or your users.</p>
-		  <p class="intro-p">These can range from triathlons, tennis tournaments, classes, leagues and even business events, such as conferences or workshops.</p>
-		  <p class="intro-p">Coming up we'll learn how to:</p>
+          <h2>Sending Requests</h2>
+          <p>The ACTIVE.com Activity Search API uses simple HTTP GET requests and returns the information formatted in JSON.</p>
+		  <p>First, let's take a look at the HTTP request format:</p>
+		  <p class="indent"><b>URL:</b> http://api.amp.active.com/v2/search?{queryString params}&api_key={key}</p>
+		  <p>Let's look at this piece-by-piece.</p>
 		  <ul>
-			<li>How to get the API key</li>
-			<li>How to make the calls to the API</li>
-			<li>Use the basic call format to allow the users to customize searches</li>
-			<li>Then present the results in a user-friendly manner to give them the details they're looking for</li>
-		  </ul>
-		  <a class="btn btn-warning btn-lg" href="get-started.html" role="button">Get Started! <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<li><i>http://api.amp.active.com/v2/</i> - This is the <u>base</u> URL for the request. It will be needed for every request we are going to make.</li>
+			<li><i>search?{queryString params}</i> - Here is will we will piece together what we what to look for. A glance at the options available in the <a class="api-link" href="http://developer.active.com/docs/read/v2_Activity_API_Search">documentation</a> shows around 40 different options listed, but any of the attributes of the responses can be used as parameters.  We will only be using a handful here, but you can see with the options available that you can make pretty specific searches.</li>
+			<li><i>&amp</i> - The '&amp' symbol is used in query strings to separate the parameters being searched on.</li>
+			<li><i>api_key={key}</i> - Here is where we will be using the key that we obtained in the earlier step, this is also going to be used in all of our requests.</li>
 		</div>
 	  </div>
-       
-  
+	  <div class="row">
+	    <div class="col-md-12">
+          <h2>How do we use this stuff?</h2>
+		  <h4>The Basics</h4>
+		  <p>Here's the basic, and easiest, way to use this information:</p>
+		  <ul>
+			<li>First, we think about some things we want to search for...</br>
+			    <i>Let's say we're looking for triathlons, within 100 miles of Houston, TX.</i></li>
+			<li>Next, we substitute our criteria and key into our URL format above...</br>
+			    <i>http://api.amp.active.com/v2/search?<span class="hilite">query=triathlon&category=events&near=Houston,TX,US&radius=100</span>&api_key=<span class="hilite">DH7XYYRXG5PNHB8RUHM23GPJ</span></li>
+		  </ul>
+		  
+        </div>
       </div>
+	  <div class="row">
+	    <div class="col-md-12">
+		  <nav>
+			<ul class="pager">
+			  <li class="previous"><a class="btn btn-warning btn-lg" href="get-started.html" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Previous</a></li>
+			  <li class="next"><a class="btn btn-warning btn-lg" href="#" role="button">Next <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+			</ul>
+		  </nav>
+
+		</div>
+	  </div>
 
       <hr>
 
       <footer>
-		<div class="col-md-10">
-			<p>creatively created by Nicholas Brown</p>
-		</div>
+        <p>creatively created by Nicholas Brown</p>
       </footer>
+	  
+	  <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
 	  
     </div> <!-- /container -->
 
@@ -102,7 +122,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+    <script src="js/index.js"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	

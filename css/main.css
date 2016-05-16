@@ -1,0 +1,91 @@
+/* navbar stuff */
+.navbar-brand {
+	color: lightgray;
+	font-family: Rockwell;
+	padding: 15px;
+}
+
+.navbar-right {
+	margin: auto;
+	padding-top: 15px;
+}
+
+.navbar-right li {
+	display: inline-block;
+	list-style: none;
+}
+
+.navbar-right>li>a {
+	font-family: Rockwell;
+	color: lightgray;
+	font-weight: 600;
+}
+
+.navbar-right>li>a:hover{
+	color: white;
+	text-decoration: none;
+}
+
+.dropdown-menu {
+	background-color: dimgray;
+}
+
+.dropdown-menu>li>a {
+	font-family: Rockwell;
+	color: white;
+}
+
+.dropdown-menu>li>a:hover {
+	text-decoration: none;
+	background-color: dimgray;
+}
+
+/* Jumbotron stuff */
+.jumbotron .container h1 {
+	text-align: center;
+}
+
+.jumbotron .container p {
+	font-size: 24px;
+	width: 60%;
+	margin: auto;
+	text-align: center;
+}
+
+.small {
+	max-width: 100px;
+	margin: 15px auto;
+	border-width: 4px;
+	border-color: #383838;
+}
+
+.jumbotron {
+	color: #181818;
+	background-repeat: no-repeat;
+	background-position: 50% 75%;
+	background-size: 100%;
+	
+}
+
+/* body stuff */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: Rockwell;
+}
+
+a.api-link {
+	text-decoration: none;
+}
+
+.intro-p {
+	font-size: 18px;
+}
+
+.intro-p>ul>li {
+	font-size: 26px;
+}
+
+.indent {
+	text-indent: 10px;
+}

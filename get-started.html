@@ -20,7 +20,7 @@
 	
     <!-- Custom styles for this template -->
 	<link href="css/main.css" rel="stylesheet">
-	<link href="css/index.css" rel="stylesheet">
+	<link href="css/general.css" rel="stylesheet">
 
   </head>
 
@@ -59,42 +59,52 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <div class="jumbotron" style="background-image: url(images/home.jpg)">
+    <div class="jumbotron" style="background-image: url(images/started.jpg)">
       <div class="container">
-        <p>This is a how-to guide that will walk you through setting up, and using, the ACTIVE.com API to help visitors to your site find activities.</p>
+        <h1>Getting Started</h1>
 		<hr class="small">
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-		<div class="col-md-2">
-			<img src="images/A-icon.png">
-		</div>
         <div class="col-md-10">
-          <p class="intro-p">The <a href="http://developer.active.com/apis" class="api-link">ACTIVE.com API</a> allows you to find activities that interest you, or your users.</p>
-		  <p class="intro-p">These can range from triathlons, tennis tournaments, classes, leagues and even business events, such as conferences or workshops.</p>
-		  <p class="intro-p">Coming up we'll learn how to:</p>
-		  <ul>
-			<li>How to get the API key</li>
-			<li>How to make the calls to the API</li>
-			<li>Use the basic call format to allow the users to customize searches</li>
-			<li>Then present the results in a user-friendly manner to give them the details they're looking for</li>
-		  </ul>
-		  <a class="btn btn-warning btn-lg" href="get-started.html" role="button">Get Started! <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+          <h2>Set up a Developer Account</h2>
+          <p>In order to use the ACTIVE.com API you first need to register for a <a href="http://developer.active.com/member/register" class="api-link">developer account</a>.</p>
+		  <p>After filling out the registration, you will receive a confirmation e-mail with a link where you can register your application to receive a key.</p>
 		</div>
 	  </div>
-       
-  
+	  <div class="row">
+	    <div class="col-md-10">
+          <h2>Register Your Application</h2>
+		  <p>Next, you will need to register an application.</p>
+		  <p>I know this sounds like you have to have a large-scale, serious application up-front, but all that is <i>required</i> is the name of the application. However, you will probably also want to select your preferred protocol and output format, here we will be using JSON.</p>
+		  <p class="indent"><img src="images/protocol.png" class="col-imgs"></p>
+		  <p>Next you will choose which Web APIs you will want to use, we will be choosing the Activity Search API v2. They also have a Campground API, but we won't be covering that in this How-To. You'll also notice that with the Activity Search API we get unlimited calls!</p>
+		  <p class="indent"><img src="images/apis.png" class="col-imgs"></p>
+		  <p>After agreeing to their terms of service, click the Register Application button. We are now presented with our API key, which we will use for our calls.</p>
+		  <p class="indent"><img src="images/key.png" class="col-imgs"></p>
+        </div>
       </div>
+	  <div class="row">
+	    <div class="col-md-12">
+		  <nav>
+			<ul class="pager">
+			  <li class="previous"><a class="btn btn-warning btn-lg" href="index.html" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Previous</a></li>
+			  <li class="next"><a class="btn btn-warning btn-lg" href="making-calls.html" role="button">Next <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+			</ul>
+		  </nav>
+
+		</div>
+	  </div>
 
       <hr>
 
       <footer>
-		<div class="col-md-10">
-			<p>creatively created by Nicholas Brown</p>
-		</div>
+        <p>creatively created by Nicholas Brown</p>
       </footer>
+	  
+	  <a href="#0" class="cd-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
 	  
     </div> <!-- /container -->
 
@@ -102,7 +112,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+    <script src="js/index.js"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	

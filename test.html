@@ -59,34 +59,7 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <div class="jumbotron" style="background-image: url(images/home.jpg)">
-      <div class="container">
-        <p>This is a how-to guide that will walk you through setting up, and using, the ACTIVE.com API to help visitors to your site find activities.</p>
-		<hr class="small">
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-		<div class="col-md-2">
-			<img src="images/A-icon.png">
-		</div>
-        <div class="col-md-10">
-          <p class="intro-p">The <a href="http://developer.active.com/apis" class="api-link">ACTIVE.com API</a> allows you to find activities that interest you, or your users.</p>
-		  <p class="intro-p">These can range from triathlons, tennis tournaments, classes, leagues and even business events, such as conferences or workshops.</p>
-		  <p class="intro-p">Coming up we'll learn how to:</p>
-		  <ul>
-			<li>How to get the API key</li>
-			<li>How to make the calls to the API</li>
-			<li>Use the basic call format to allow the users to customize searches</li>
-			<li>Then present the results in a user-friendly manner to give them the details they're looking for</li>
-		  </ul>
-		  <a class="btn btn-warning btn-lg" href="get-started.html" role="button">Get Started! <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
-		</div>
-	  </div>
-       
-  
-      </div>
+    <p class="js"></p>
 
       <hr>
 
@@ -102,7 +75,43 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	var k = "DH7XYYRXG5PNHB8RUHM23GPJ";
 
+	document.addEventListener('DOMContentLoaded', getData);
+
+	function getData(){
+	  
+		//make a new XMLHttpRequest and set up other variables
+		var req = new XMLHttpRequest();
+
+		//open request to OpenWeatherMap
+		req.open("GET", "http://api.amp.active.com/v2/search?query=triathlon&category=events&near=Houston,TX,US&radius=100&api_key=" + k, true);
+		postReq.setRequestHeader('Access-Control-Allow-Origin', 'application/json');
+
+		//add listener for load with to do stuff with response
+		req.addEventListener('load', function(){
+		  //if the status code is good
+		  if(req.status >= 200 && req.status < 400){
+			var results = JSON.parse(req.responseText);
+			//set City name, temp, humidity and current conditions
+			console.log(results);
+			
+		  }
+		  else {
+			//display error information if needed
+			console.log("Error");
+		  }	
+		  
+		  //clear input box for next input
+		});
+		
+		//send the request and prevent form submit's default behavior
+		req.send(null);
+	}
+	  
+
+	</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
