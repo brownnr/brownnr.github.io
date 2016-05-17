@@ -62,9 +62,9 @@
 .jumbotron {
 	color: #181818;
 	background-repeat: no-repeat;
-	background-position: 50% 90%;
+	background-position: 50% 80%;
 	background-size: 100%;
-	
+	min-width: 622px;
 }
 
 /* body stuff */
