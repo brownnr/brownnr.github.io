@@ -61,7 +61,7 @@
     </nav>
 
     <!-- Main jumbotron -->
-    <div class="jumbotron" style="background-image: url(images/started.jpg)">
+    <div class="jumbotron" style="background-image:url(images/started.jpg)">
       <div class="container">
         <h1>Getting Started</h1>
 		<hr class="small">
@@ -71,23 +71,26 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10">
-          <h2>Set up a Developer Account</h2>
-          <p>In order to use the ACTIVE.com API you first need to register for a <a href="http://developer.active.com/member/register" class="api-link">developer account</a>.</p>
-		  <p>After filling out the registration, you will receive a confirmation e-mail with a link where you can register your application to receive a key.</p>
+          <h2>Finding the keys</h2>
+          <p>In order to use some of the available APIs, you need to register for a key. For the mashup we will be making, we will need a key from the <a href="https://developer.nrel.gov/docs/api-key/" class="api-link" target='_blank'>National Renewable Energy Laboratory(NREL)</a> and a key from the <a href="http://api.census.gov/data/key_signup.html" class="api-link" target='_blank'>Census Bureau</a>.</p>
+		  <p>We will also be using the United States Department of Agriculture's <a href="http://search.ams.usda.gov/farmersmarkets/v1/svcdesc.html" class="api-link" target='_blank'>Farmers Market Directory API</a>, but it does not require a key.</p>
 		</div>
 	  </div>
 	  <div class="row">
 	    <div class="col-md-10">
-          <h2>Register Your Application</h2>
-		  <p>Next, you will need to register an application.</p>
-		  <p>I know this sounds like you have to have a large-scale, serious application up-front, but all that is <i>required</i> is the name of the application. However, you will probably also want to select your preferred protocol and output format, here we will be using JSON.</p>
-		  <p class="indent"><img src="images/protocol.png" class="col-imgs"></p>
-		  <p>Next you will choose which Web APIs you will want to use, we will be choosing the Activity Search API v2. They also have a Campground API, but we won't be covering that in this How-To. You'll also notice that with the Activity Search API we get unlimited calls!</p>
-		  <p class="indent"><img src="images/apis.png" class="col-imgs"></p>
-		  <p>After agreeing to their terms of service, click the Register Application button. We are now presented with our API key, which we will use for our calls.</p>
-		  <p class="indent"><img src="images/key.png" class="col-imgs"></p>
+          <h2>The NREL key</h2>
+		  <p>Once we <a href="https://developer.nrel.gov/signup/" class="api-link" target='_blank'>signup for an API key</a> we will have access to the <a href="https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/" class="api-link" target='_blank'>Alternative Fuel Stations database</a>.</p>
+		  <p>There are many ways to use this particular API, but we will be search for stations on the "nearest" parameter.</p>
+		  <p class="indent"><img src="images/nearest.png" class="col-imgs"></p>
         </div>
       </div>
+	  <div class="row">
+	    <div class="col-md-10">
+          <h2>The key to the Census Bureau</h2>
+	  
+	  
+		</div>
+	  </div>
 	  <div class="row">
 	    <div class="col-md-12">
 		  <nav>
