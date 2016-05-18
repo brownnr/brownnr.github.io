@@ -74,7 +74,7 @@
 		  <ul>
 			<li><b>format</b> - This is the format in which you want the response. This API offers JSON, XML or CSV.</br>This is a required parameter and we will be using JSON in this guide.</li>
 			<li><b>api_key</b> - This is exactly what it sounds like, the NREL API key we obtained earlier, this is also required.</br>You normally want to keep this private, but for demonstration purposes, mine is visible.</li>
-			<li><b>location</b> - This is also pretty obvious, it is a free-form input and is pretty flexible in the format you provide. We will stick with the city, state format to keep it simple.</br><i>Either the location, or latitude/longitude, parameters are required. Since nobody uses latitude/longitude when describing where they're going, we'll just use location.</li>
+			<li><b>location</b> - This is also pretty obvious, it is a free-form input and is pretty flexible in the format you provide. We will stick with the city, state format to keep it simple.</br><i>Either the location, or latitude/longitude, parameters are required. Since nobody uses latitude/longitude when describing where they're going, we'll just use location.</i></li>
 			<li><b>radius</b> - The default value here is 5 miles, or you can specify in the range of 0-500. There is also a special <code>infinite</code> string, which finds nearest stations regardless of distance.</li>
 			<li><b>status</b> - Here you can narrow the results down to all, open, planned or temporarily unavailable. Planned and temporarily unavailable are not of much interest, so we will use the <i>'E'</i> option.</li>
 			<li><b>access</b> - There are several options here as well, all, public, private. Again, we will be using the most useful of the three, <i>public</i>.</li>
