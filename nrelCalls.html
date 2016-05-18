@@ -100,8 +100,7 @@
 			  <a href="https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=10" target="_blank">https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=10</a>
 		  </div>
 		  </p>
-		  <p>Wow! What a bunch of gibberish! Try going <a href="http://jsonlint.com/" class="api-link" target="_blank">here</a> and pasting the following:</br>https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=2</br>
-		  I've narrowed the results even further, down to 2, to make it easier to see what's going on.</p>
+		  <p>Wow! What a bunch of gibberish! Try going <a href="http://jsonlint.com/" class="api-link" target="_blank">here</a> and pasting the following, I've narrowed the results even further, down to 2, to make it easier to see what's going on:</br>https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=2</p>
 		  <p>First, you'll probably notice a lot of interesting, but mostly meaningless, information. The results show us the latitude and longitude, the total_results, 364 at the time of writing this, and definitely more than we want to sift through. You may also see that they break down that 364 by types, 72 E85 stations, 383 Electric stations, etc. Then we start getting the information that will most likely interest our users, the fuel_stations array.</p>
 		  <p>The first fuel_station returned should look something like this:</br>
 			<pre>"fuel_stations": [{
