@@ -33,6 +33,7 @@
 	
   
 	<script type="text/javascript"> 
+	function findFarmers(){
 		var req = new XMLHttpRequest();
 		req.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=77450", true);
 		req.addEventListener('load', function(){
@@ -43,6 +44,8 @@
 				console.log("Error");
 			}});
 		req.send(null);
+	}
+	
 		//console.log(JSON.parse(req.responseText));
 	
 		/*var url = "http://api.amp.active.com/v2/search?v=json&near=houston%2Ctx&current_page=1&per_page=10&sort=distance&topic=running&exclude_children=true&api_key=dh7xyyrxg5pnhb8ruhm23gpj";

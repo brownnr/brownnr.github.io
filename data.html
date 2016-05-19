@@ -51,6 +51,7 @@
 				<hr class="divider">
 				<li class="dropdown-header">Putting It All Together</li>
                 <li><a href="data.html">Get Real Data</a></li>
+				<li><a href="users.html">Forming The App</a></li>
               </ul>
             </li>
           </ul>
@@ -69,42 +70,80 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10">
-          <h2>First Things First</h2>
-          <p>First, we will use the <code>zipSearch</code> call to the Farmers Market Directory. The format of this URL is as follows:</p>
-		  <pre class="codes"> http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=<i>zip</i></pre>
-		  <p>For this demonstration, we will use my zip code, 77450. So our full request URL will be:</p>
-		  <pre class="codes">http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=77450</pre>
-		  <p>The JSON response that you will get back should look something like this:</p>
-		  <pre class="codes">"results": [{
-	"id": "1010320",
-	"marketname": "2.0 Farmers Market On Grand Parkway"
-}, {
-	"id": "1007187",
-	"marketname": "2.6 Farmers Market at LaCenterra"
-}, {
-	"id": "1010319",
-	"marketname": "11.2 Westchase District Farmers Market"
-}...</pre>
-		  <p>This doesn't really give us a whole lot, does it? Let's see what it <i>does</i> give us.</p>		  
-		  <ul>
-			<li><b>results</b> - This is just a simple array, of all the farmers markets in my area.</li>
-			<li><b>marketname</b> - Here we see the name of each of the markets. What's that number at the beginning you ask? Well, that's the distance in miles the market is from the center of the zip code. So we can see the Farmers Market on Grand Parkway is 2 miles from the center of the zip code 77450. You may also note, these are returned sorted by distance.</li>
-			<li><b>id</b> - I know this may seem meaningless now, but this is really key to finding the information our users are probably more interested in. Below I will show you how we are going to use these ids to get the details of the farmers markets in this area.</li>
-		  </ul>
-		  
-		  <h2>Where Can I Find These Markets?</h2>
-		  <p>As you read above, let's see how we can use the market's ids to get a little more details about them. Not much will change in our request, but instead of using <code>zipSearch</code> we'll be using <code>mktDetail</code> in our call. Let's get some more information about this Farmers Market on Grand Parkway, here's our new request:</p>
-		  <pre class="codes">http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=1010320</pre>
-		  <pre class="codes">"marketdetails": {
-	"Address": "1225 West Grand Parkway South, Katy, Texas, Texas, 77494",
-	"GoogleLink": "http:\/\/maps.google.com\/?q=29.762524%2C%20-95.775004%20(%22Farmers+Market+On+Grand+Parkway%22)",
-	"Products": "Baked goods; Crafts and\/or woodworking items; Eggs; Fish and\/or seafood...,
-	"Schedule": "01\/01\/2014 to 12\/31\/2014 Sun: 8:00 AM-12:00 PM;&lt;br&gt; &lt;br&gt; &lt;br&gt; "
+          <h2>The Fun Part</h2>
+          <p>Now let's get into the fun part, coding. We're going to be using some JavaScript here, if you aren't familiar with it, I recommend starting <a href="https://www.codecademy.com/learn/javascript" class="api-link">here</a>. We will also be using <a href="https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started" class="api-link">AJAX</a>, which stands for Asynchronous JavaScript and XML, to communicate with the API's servers and retrieve, and return, the data our users are looking for.</p>
+		  <p>Near the end, we will be using HTML forms to get data from the users, I'm assuming you know the basics. If not, this is a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms" class="api-link">good jumping off point</a>.</p>
+		  		  
+		  <h2>One Small Step</h2>
+		  <p>First we're going to start with the NREL calls. Let's see what this would look like in an AJAX call inside a JavaScript function:</p>
+		  <!--===================================================-->
+		  <!-- UPDATE JS CODE HERE -->
+		  <!--===================================================-->
+		  <pre class="codes">
+var k = "oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY";
+
+document.addEventListener('DOMContentLoaded', getStations);
+
+function getStations(){
+  
+	//make a new XMLHttpRequest and set up other variables
+	var req = new XMLHttpRequest();
+
+	//open request to NREL
+	req.open("GET", "http://api.amp.active.com/v2/search?query=triathlon&category=events&near=Houston,TX,US&radius=100&api_key=" + k, true);
+	postReq.setRequestHeader('Access-Control-Allow-Origin', 'application/json');
+
+	//add listener on page load to do stuff with response
+	req.addEventListener('load', function(){
+	  //if the status code is good
+	  if(req.status >= 200 && req.status < 400){
+		var results = JSON.parse(req.responseText);
+		//set City name, temp, humidity and current conditions
+		console.log(results);
+		
+	  }
+	  else {
+		//display error information if needed
+		console.log("Error");
+	  }	
+	  
+	});
+	
+	//send the request and prevent form submit's default behavior
+	req.send(null);
 }</pre>
-		  <p>That's a little more useful, isn't it? Now we have the address, even a Google Maps link, a description of the products available, and the schedule. Although, you'll notice the schedule date says 2014, I reassure you this market is still active. For this tutorial, we will only be using the Address and GoogleLink properties.</p>
+		  <!--===================================================-->
+		  <!-- UPDATE BELOW RELEVANT TO JS ABOVE -->
+		  <!--===================================================-->
+		  <p>Let's talk a little about what's happening here.</p>
 		  
-		  <h2>Where Are We Going With All This?</h2>
-		  <p>Now let's see how we can put this all together, with data from our users, to get the data that's relevant to them.</p>			  
+		  <h2>One Giant Leap</h2>
+		  <p>Now, let's try calling the Farmers Market Directory. This one is going to be a little more complicated. If you remember, we first had to use the <code>zipSearch</code> request to the market's id, which we then used in the <code>mktDetail</code> request to get more details.</p>
+		  <p>We will be using AJAX again, but only for one of the calls, the <code>zipSearch</code> call. The <code>mktDetail</code> actually needs to be a synchronous call, in order for it to return what we want, when we want it. Maybe seeing is believing:</p>
+		  <!--===================================================-->
+		  <!-- UPDATE FARMERS MARKET CODE HERE -->
+		  <!--===================================================-->
+		  <pre class="codes">		  
+function findFarmers(){
+	var req = new XMLHttpRequest();
+	req.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=77450", true);
+	req.addEventListener('load', function(){
+		if(req.status >= 200 && req.status < 400){
+			var res = JSON.parse(req.responseText);
+			console.log(res);
+		} else {
+			console.log("Error");
+		}});
+	req.send(null);
+}</pre>
+		  <!--===================================================-->
+		  <!-- UPDATE BELOW RELEVANT TO JS ABOVE -->
+		  <!--===================================================-->
+		  <p>Let's see if we can step through this, to see how the asynchronous and synchronous calls are working together, to give us what we want.</p>
+		  
+		  <h2>What About Our Users?</h2>
+		  <p>Well, let's get them involved!</p>			
+		  
         </div>
       </div>
 	  <div class="row">
@@ -112,13 +151,13 @@
 		  <nav>
 			<ul class="pager">
 			  <li class="previous">
-				<a class="btn btn-warning btn-lg" href="nrelCalls.html" role="button">
+				<a class="btn btn-warning btn-lg" href="farmers.html" role="button">
 					<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
 					&nbspPrevious
 				</a>
 			  </li>
 			  <li class="next">
-				<a class="btn btn-warning btn-lg" href="data.html" role="button">
+				<a class="btn btn-warning btn-lg" href="users.html" role="button">
 					Next&nbsp
 					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</a>
