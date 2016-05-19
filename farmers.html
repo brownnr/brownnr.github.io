@@ -59,7 +59,7 @@
     <!-- Main jumbotron -->
     <div class="jumbotron" style="background-image: url(images/calls.jpg)">
       <div class="container">
-        <h1>Talking to the NREL</h1>
+        <h1>Calling all Farmers Markets</h1>
 		<hr class="small">
       </div>
     </div>
@@ -67,36 +67,42 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10">
-          <h2>Sending Requests</h2>
-          <p>The NREL API uses a simple HTTP GET request format. You start with a base request URL:</p>
-		  <pre class="codes"> https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.<i>format?parameters</i></pre>
-		  <p>Then we fill in the <i>format?parameters</i> pieces. There are <a href="https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/nearest/#request-parameters" class="api-link" target="_blank">a lot</a> of possible parameters you can use, we will only look at those that are most likely to be useful:</p>
+          <h2>First Things First</h2>
+          <p>First, we will use the <code>zipSearch</code> call to the Farmers Market Directory. The format of this URL is as follows:</p>
+		  <pre class="codes"> http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=<i>zip</i></pre>
+		  <p>For this demonstration, we will use my zip code, 77450. So our full request URL will be:</p>
+		  <pre class="codes">http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?sip=77450</pre>
+		  <p>The JSON response that you will get back should look something like this:</p>
+		  <pre class="codes">"results": [{
+	"id": "1010320",
+	"marketname": "2.0 Farmers Market On Grand Parkway"
+}, {
+	"id": "1007187",
+	"marketname": "2.6 Farmers Market at LaCenterra"
+}, {
+	"id": "1010319",
+	"marketname": "11.2 Westchase District Farmers Market"
+}...</pre>
+		  <p>This doesn't really give us a whole lot, does it? Let's see what it <i>does</i> give us.</p>		  
 		  <ul>
-			<li><b>format</b> - This is the format in which you want the response. This API offers JSON, XML or CSV.</br>This is a required parameter and we will be using JSON in this guide.</li>
-			<li><b>api_key</b> - This is exactly what it sounds like, the NREL API key we obtained earlier, this is also required.</br>You normally want to keep this private, but for demonstration purposes, mine is visible.</li>
-			<li><b>location</b> - This is also pretty obvious, it is a free-form input and is pretty flexible in the format you provide. We will stick with the city, state format to keep it simple.</br><i>Either the location, or latitude/longitude, parameters are required. Since nobody uses latitude/longitude when describing where they're going, we'll just use location.</i></li>
-			<li><b>radius</b> - The default value here is 5 miles, or you can specify in the range of 0-500. There is also a special <code>infinite</code> string, which finds nearest stations regardless of distance.</li>
-			<li><b>status</b> - Here you can narrow the results down to all, open, planned or temporarily unavailable. Planned and temporarily unavailable are not of much interest, so we will use the <i>'E'</i> option.</li>
-			<li><b>access</b> - There are several options here as well, all, public, private. Again, we will be using the most useful of the three, <i>public</i>.</li>
-			<li><b>limit</b> - Last, but certainly not least, we don't want to overwhelm our user with too many choices, so we will limit our results to the 10 nearest stations here.</li>
+			<li><b>results</b> - This is just a simple array, of all the farmers markets in my area.</li>
+			<li><b>marketname</b> - Here we see the name of each of the markets. What's that number at the beginning you ask? This is the distance in miles the market is from the center of the zip code. So we can see the Farmers Market on Grand Parkway is 2 miles from the center of the zip code 77450.</li>
+			<li><b>id</b> - I know this may seem meaningless now, but this is really key to finding the information our users are probably more interested in. Below I will show you how we are going to use these ids to get the details of the farmers markets in this area.</li>
 		  </ul>
 		  
-		  <h2>How do we use this stuff?</h2>
-		  <p>Let's look at how we would construct this request URL, and what it might return. Let's start with the 10 closest open, public stations to Katy, TX within a 100 mile radius.</p>
-		  <p>So using the information from above:</p>
-		  <ul>
-			<li><b>format</b> - JSON</li>
-			<li><b>api_key</b> - oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY</br><i>You can also use 'DEMO_KEY' if you have not received your own key, but you do have a lower limit on calls to the API</i>.</li>
-			<li><b>location</b> - Katy, TX</li>
-			<li><b>radius</b> - 100</li>
-			<li><b>status</b> - E</li>
-			<li><b>access</b> - public</li>
-			<li><b>limit</b> - 10</li>
-		  </ul>			
-		  Click the link:</br>
-		  <p class="indent">
-			  <a href="https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=10" target="_blank">https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=10</a>
-		  </p>
+		  <h2>Where Can I Find These Markets?</h2>
+		  <p>As you read above, let's see how we can use the market's ids to get a little more details about them. Not much will change in our request, but instead of using <code>zipSearch</code> we'll be using <code>mktDetail</code> in our call. Let's get some more information about this Farmers Market on Grand Parkway, here's our new request:</p>
+		  <pre class="codes">http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=1010320</pre>
+		  <pre class="codes">"marketdetails": {
+	"Address": "1225 West Grand Parkway South, Katy, Texas, Texas, 77494",
+	"GoogleLink": "http:\/\/maps.google.com\/?q=29.762524%2C%20-95.775004%20(%22Farmers+Market+On+Grand+Parkway%22)",
+	"Products": "Baked goods; Crafts and\/or woodworking items; Eggs; Fish and\/or seafood; Fresh fruit and vegetables; Fresh and\/or dried herbs; Honey; Canned or preserved fruits, vegetables, jams, jellies, preserves, salsas, pickles, dried fruit, etc.; Meat; Plants in containers; Poultry; Prepared foods (for immediate consumption); Soap and\/or body care products",
+	"Schedule": "01\/01\/2014 to 12\/31\/2014 Sun: 8:00 AM-12:00 PM;<br> <br> <br> "
+	}</pre>
+		  
+		  
+		  
+		  
 		  <p>Wow! What a bunch of gibberish! I've narrowed the results a little further, down to 2, to make it easier to see what's going on, now try going <a href="http://jsonlint.com/" class="api-link" target="_blank">here</a> and pasting the following:</br><p class="indent">https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=2</p></p></br>
 		  <p>First, you'll probably notice a lot of interesting, but mostly meaningless, information. The results show us the latitude and longitude, the total_results, 364 at the time of writing this, and definitely more than we want to sift through. You may also see that they break down that 364 by types, 72 E85 stations, 383 Electric stations, etc. Then we start getting the information that will most likely interest our users, the fuel_stations array.</p>
 		  <p>The first fuel_station returned should look something like this:</p>
