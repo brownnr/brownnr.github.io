@@ -49,6 +49,9 @@
 				<li class="dropdown-header">Using Your Keys</li>
                 <li><a href="nrelCalls.html">NREL API Calls</a></li>
                 <li><a href="farmers.html">Market Calls</a></li>
+				<hr class="divider">
+				<li class="dropdown-header">Putting It All Together</li>
+                <li><a href="data.html">Get Real Data</a></li>
               </ul>
             </li>
           </ul>
@@ -86,7 +89,7 @@
 		  <p>This doesn't really give us a whole lot, does it? Let's see what it <i>does</i> give us.</p>		  
 		  <ul>
 			<li><b>results</b> - This is just a simple array, of all the farmers markets in my area.</li>
-			<li><b>marketname</b> - Here we see the name of each of the markets. What's that number at the beginning you ask? Well, that's the distance in miles the market is from the center of the zip code. So we can see the Farmers Market on Grand Parkway is 2 miles from the center of the zip code 77450.</li>
+			<li><b>marketname</b> - Here we see the name of each of the markets. What's that number at the beginning you ask? Well, that's the distance in miles the market is from the center of the zip code. So we can see the Farmers Market on Grand Parkway is 2 miles from the center of the zip code 77450. You may also note, these are returned sorted by distance.</li>
 			<li><b>id</b> - I know this may seem meaningless now, but this is really key to finding the information our users are probably more interested in. Below I will show you how we are going to use these ids to get the details of the farmers markets in this area.</li>
 		  </ul>
 		  
@@ -98,57 +101,11 @@
 	"GoogleLink": "http:\/\/maps.google.com\/?q=29.762524%2C%20-95.775004%20(%22Farmers+Market+On+Grand+Parkway%22)",
 	"Products": "Baked goods; Crafts and\/or woodworking items; Eggs; Fish and\/or seafood...,
 	"Schedule": "01\/01\/2014 to 12\/31\/2014 Sun: 8:00 AM-12:00 PM;&lt;br&gt; &lt;br&gt; &lt;br&gt; "
-	}</pre>
-		  
-		  
-		  
-		  
-		  <p>Wow! What a bunch of gibberish! I've narrowed the results a little further, down to 2, to make it easier to see what's going on, now try going <a href="http://jsonlint.com/" class="api-link" target="_blank">here</a> and pasting the following:</br><p class="indent">https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY&location=Katy+TX&radius=100&status=E&access=public&limit=2</p></p></br>
-		  <p>First, you'll probably notice a lot of interesting, but mostly meaningless, information. The results show us the latitude and longitude, the total_results, 364 at the time of writing this, and definitely more than we want to sift through. You may also see that they break down that 364 by types, 72 E85 stations, 383 Electric stations, etc. Then we start getting the information that will most likely interest our users, the fuel_stations array.</p>
-		  <p>The first fuel_station returned should look something like this:</p>
-			<pre class="codes">"fuel_stations": [{
-	"access_days_time": "8am-5pm M-F (Fri hours in winter only)",
-	"cards_accepted": "Cash A D M V",
-	"date_last_confirmed": "2015-08-04",
-	"expected_date": null,
-	"fuel_type_code": "LPG",
-	"id": 20182,
-	"groups_with_access_code": "Public - Call ahead",
-	"open_date": null,
-	"owner_type_code": "P",
-	"status_code": "E",
-	"station_name": "Schindler Gas",
-	"station_phone": "979-234-3314",
-	"updated_at": "2016-01-13T17:59:17Z",
-	"geocode_status": "GPS",
-	"latitude": 29.7858,
-	"longitude": -95.8281,
-	"city": "Eagle Lake",
-	"intersection_directions": "1 mile east of Eagle Lake",
-	"plus4": null,
-	"state": "TX",
-	"street_address": "6072 Highway 90A",
-	"zip": "77434",
-	"bd_blends": null,
-	"e85_blender_pump": null,
-	"ev_connector_types": null,
-	"ev_dc_fast_num": null,
-	"ev_level1_evse_num": null,
-	"ev_level2_evse_num": null,
-	"ev_network": null,
-	"ev_network_web": null,
-	"ev_other_evse": null,
-	"hy_status_link": null,
-	"lpg_primary": false,
-	"ng_fill_type_code": null,
-	"ng_psi": null,
-	"ng_vehicle_class": null,
-	"distance": 0.22257
 }</pre>
-		  <p>Again, a lot of information that we don't necessarily want. The bits we're interested in would be the <i>station_name, station_phone, city, state, street_address,</i> and <i>zip</i>. The <i>intersection_directions</i> would be nice, as well, but this can often be null. Later, I will be showing you how you can extract just this information we want and display it to our user.</p>
+		  <p>That's a little more useful, isn't it? Now we have the address, even a Google Maps link, a description of the products available, and the schedule. Although, you'll notice the schedule date says 2014, I reassure you this market is still active. For this tutorial, we will only be using the Address and GoogleLink properties.</p>
 		  
-		  <h2>But First</h2>
-		  <p>Let's see how to make calls to the USDA's Farmers Market Directory API, and what sort pf information we can get.</p>			  
+		  <h2>Where Are We Going With All This?</h2>
+		  <p>Now let's see how we can put this all together, with data from our users, to get the data that's relevant to them.</p>			  
         </div>
       </div>
 	  <div class="row">
@@ -162,7 +119,7 @@
 				</a>
 			  </li>
 			  <li class="next">
-				<a class="btn btn-warning btn-lg" href="farmers.html" role="button">
+				<a class="btn btn-warning btn-lg" href="data.html" role="button">
 					Next&nbsp
 					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</a>
@@ -176,7 +133,7 @@
 
       <footer>
 	  	<div class="col-md-10">
-          <p>imaginatively created by Nick Brown</p>
+          <p>cleverly created by Nick Brown</p>
 		</div>
       </footer>
 	  
