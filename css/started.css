@@ -1,7 +1,7 @@
 #nearest {
-	width: 550px;
+	max-width: 550px;
 }
 
 #survey {
-	width: 500px;
+	max-width: 500px;
 }
