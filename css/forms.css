@@ -39,3 +39,7 @@ pre {
 	text-align: center;
 	visibility: hidden;
 }
+
+#final {
+	visibility: hidden;
+}

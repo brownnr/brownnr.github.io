@@ -94,6 +94,7 @@ function getStations(){
 			for(var x = 0; x < reveal.length; x++){
 			  reveal[x].style.visibility = "visible";
 			}
+			document.getElementById("final").style.visibility = "visible";
 			
 		},
 		error: reqErr
