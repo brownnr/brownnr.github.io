@@ -51,7 +51,7 @@
 				<hr class="divider">
 				<li class="dropdown-header">Putting It All Together</li>
                 <li><a href="data.html">Get Real Data</a></li>
-				<li><a href="users.html">Forming The App</a></li>
+				<li><a href="farmCall.html">Data Farming</a></li>
               </ul>
             </li>
           </ul>
@@ -62,11 +62,12 @@
     <!-- Main jumbotron -->
     <div class="jumbotron" style="background-image: url(images/data.jpg)">
       <div class="container">
-        <h1>Making It Useful</h1>
+        <h1>Where's My Data</h1>
 		<hr class="small">
       </div>
     </div>
 
+	<!-- The Real Information -->
     <div class="container">
       <div class="row">
         <div class="col-md-10">
@@ -76,75 +77,76 @@
 		  		  
 		  <h2>One Small Step</h2>
 		  <p>First we're going to start with the NREL calls. Let's see what this would look like in an AJAX call inside a JavaScript function:</p>
-		  <!--===================================================-->
-		  <!-- UPDATE JS CODE HERE -->
-		  <!--===================================================-->
 		  <pre class="codes">
 var k = "oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY";
 
 document.addEventListener('DOMContentLoaded', getStations);
 
 function getStations(){
-  
-	//make a new XMLHttpRequest and set up other variables
-	var req = new XMLHttpRequest();
-
-	//open request to NREL
-	req.open("GET", "http://api.amp.active.com/v2/search?query=triathlon&category
-		=events&near=Houston,TX,US&radius=100&api_key=" + k, true);
-	postReq.setRequestHeader('Access-Control-Allow-Origin', 'application/json');
-
-	//add listener on page load to do stuff with response
-	req.addEventListener('load', function(){
-	  //if the status code is good
-	  if(req.status >= 200 && req.status < 400){
-		var results = JSON.parse(req.responseText);
-		//set City name, temp, humidity and current conditions
-		console.log(results);
-		
-	  }
-	  else {
-		//display error information if needed
-		console.log("Error");
-	  }	
-	  
-	});
+  var req = new XMLHttpRequest();
+  var loc = document.getElementById("location").value;
+  var rad = document.getElementById("radius").value;
 	
-	//send the request and prevent form submit's default behavior
-	req.send(null);
+  req.open("GET", "https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?
+	api_key=" + k + "&location=" + loc + "&radius=" + rad + "&status=E&access=
+	public&limit=2", true);
+  req.addEventListener('load', function(){
+	
+      if(req.status >= 200 && req.status < 400){
+        var res = JSON.parse(req.responseText);
+        var stations = res.fuel_stations;
+        var max;
+		
+        if(stations.length - 1 < 10){
+          max = stations.length - 1;
+        } else {
+          max = 10;
+        }
+        
+        for(x = 0; x < max; x++){
+          var station = res.fuel_stations[x];
+          var p = document.createElement("p");
+				
+          p.innerHTML = "&lt;b&gt" + station.station_name + "&lt;/b&gt&lt;br&gt" + station.street_address
+            + "&lt;br&gt" + station.city + ", " + station.state + " " + station.zip + "&lt;br&gt" + 
+            station.station_phone + "&lt;br&gt";
+
+          document.body.appendChild(p);
+        }
+      } else {
+        var head = document.createElement("h2");
+        var p = document.createElement("p");
+		
+        head.innerHTML = "Error in the network request:"
+        p.innerHTML = req.statusText;
+		
+        document.body.appendChild(head);
+        document.body.appendChild(p);
+      }
+  });
+	
+  req.send(null);
+  event.preventDefault();
 }</pre>
-		  <!--===================================================-->
-		  <!-- UPDATE BELOW RELEVANT TO JS ABOVE -->
-		  <!--===================================================-->
 		  <p>Let's talk a little about what's happening here.</p>
-		  
+		  <ul>
+			<li><p>In the first two lines of code, we are simply assigning our key to a variable, which will make it easier in the future if we ever need to change it. We are then adding an Event Listener to our HTML page which will run our <code>getStations</code> function once the DOM content is loaded.</p></li>
+			<li><p>Next, we see our function, this is where the real action is.</p>
+				<p>First we make a new <code>XMLHttpRequest</code> this is actually another API, but we aren't going to talk about what it is doing in detail here. Basically, it allows us the ability to transfer data between our client(the user's browser) and the server(the API we're calling).</p>
+				<p>We also set up a couple other variables that we will be using later, these will get the user's input from our forms that we will have on our mashup.</p>
+				<p>Now we <code>open</code> our <code>GET</code> request and pass it the API URL that we went over earlier. Then we pass the argument <code>true</code>, this is saying that we do want this function to be asynchronous.</p>
+				<p>You may have noticed that the API URL that we are using looks a little different. This is because I've used the variables I talked about earlier, in order to capture the user's input</p>
+				<p>Then we see the Event Listener again, this time we want it to call a function once the call to the API has loaded. For the function argument, rather than passing a function name, like we did earlier, we are using an IIFE, pronounced "iffy". An IIFE is an immediately-invoked function expression, this means that we want this function called immediately.</p>
+				<p>Inside this function, we have a check to make sure the request we sent was a success, <code>req.status >= 200 && req.status < 400</code>. If it is not, then we will return an error message.
+				<p>If the request returned successfully, we are going to parse the JSON response with <code>JSON.parse</code>. Then we assign the array of <i>fuel_stations</i> to a variable so that we can use it in the following <code>for</code> loop.</p>
+				<p>With the <code>for</code> loop, we only want to return the 10 closest stations. We set the <code>max</code> variable according to the number of stations returned in the array.</p>
+				<p>Now we loop through our array, creating a <i>p</i> element with our call to <code>document.createElement("p");</code>. We then use the attributes I talked about previously to construct a formatted paragraph with the <i>station_name, street_address, city, state, zip</i> and <i>station_phone</i>. We then append our new <i>p</i> element to the body of the HTML document.</p>
+			<li><p>Finally we see the <code>req.send(null);</code> call. Wait, what!? We're sending the call to the API <i>after</i> we do stuff with the response!?</p>
+				<p>That's right, that's the beauty of AJAX, we can add our Event Listener and continue doing things while it waits for the request to finish loading! Technology is wonderful, isn't it?</p>
+				<p>Lastly, we are going to <code>preventDefault</code>. This just cancels the default action of our form's submit button.</p></li>
+		  </ul>
 		  <h2>One Giant Leap</h2>
-		  <p>Now, let's try calling the Farmers Market Directory. This one is going to be a little more complicated. If you remember, we first had to use the <code>zipSearch</code> request to the market's id, which we then used in the <code>mktDetail</code> request to get more details.</p>
-		  <p>We will be using AJAX again, but only for one of the calls, <code>zipSearch</code>. The <code>mktDetail</code> actually needs to be a synchronous call, in order for it to return what we want, when we want it. Maybe seeing is believing:</p>
-		  <!--===================================================-->
-		  <!-- UPDATE FARMERS MARKET CODE HERE -->
-		  <!--===================================================-->
-		  <pre class="codes">
-function findFarmers(){
-	var req = new XMLHttpRequest();
-	req.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/
-		zipSearch?zip=77450", true);
-	req.addEventListener('load', function(){
-		if(req.status >= 200 && req.status < 400){
-			var res = JSON.parse(req.responseText);
-			console.log(res);
-		} else {
-			console.log("Error");
-		}});
-	req.send(null);
-}</pre>
-		  <!--===================================================-->
-		  <!-- UPDATE BELOW RELEVANT TO JS ABOVE -->
-		  <!--===================================================-->
-		  <p>Let's see if we can step through this, to see how the asynchronous and synchronous calls are working together, to give us what we want.</p>
-		  
-		  <h2>What About The Users?</h2>
-		  <p>Well, let's get them involved!</p>			
+		  <p>Next, let's see what the code for calling the Farmers Market Directory might look like.</p>		
 		  
         </div>
       </div>
@@ -159,7 +161,7 @@ function findFarmers(){
 				</a>
 			  </li>
 			  <li class="next">
-				<a class="btn btn-warning btn-lg" href="users.html" role="button">
+				<a class="btn btn-warning btn-lg" href="farmCall.html" role="button">
 					Next&nbsp
 					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</a>

@@ -120,6 +120,11 @@ a.api-link {
 	margin-left: 15px;
 }
 
+pre {
+	display: inline-block;
+	padding-right: 40px;
+}
+
 /* footer stuff */
 hr {
 	margin: 30px auto 10px;

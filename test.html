@@ -7,111 +7,156 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="A How-To Guide to the ACTIVE.com API">
     <meta name="author" content="Nicholas Brown">
-    <link rel="icon" href="images/how.bmp">
 
     <title>ACTIVE.com API How-To</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<!-- Optional theme 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">-->
-
 	
-    <!-- Custom styles for this template -->
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/index.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
 
   </head>
 
   <body>
+  <script type="text/javascript"> 
+  var zip = 77450;
+  
+  jQuery.ajax({
+    url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+    success: function(data){
+		var markets = data.results;
+		var max;
+			
+		if(markets.length < 10){
+		  max = markets.length;
+		} else {
+		  max = 10;
+		}
+	
+		for(var x = 0; x < max; x++){
+		  var id = markets[x].id;
+		  var name = markets[x].marketname;
+		  var p = document.createElement("p");
+		  
+		  p.innerHTML = "<b>" + name.substring(name.indexOf(' ') + 1) + "</b>";
+		  
+		  $.ajax({
+			url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+			async: false,
+			success: function(detail){
+				var addr = detail.marketdetails.Address;
+				var map = detail.marketdetails.GoogleLink;
+				var link = document.createElement("a");
+				
+				link = "<a href='" + map + "' target='_blank'>View Map</a><br>";
+				
+				p.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + link + addr;
+				
+				document.body.appendChild(p);
+			},
+			error: reqErr,
+		  });
+		  
+		}
+    },
+    error: reqErr
+	
+  });
+  
+  function reqErr(data){
+      var head = document.createElement("h2");
+      var p = document.createElement("p");
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-			ACTIVE.com API How-To
-		  </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="navbar-right">
-            <li>
-				<a href="index.html">Home</a>
-            </li>
-			<li role="separator" class="divider"></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="get-started.html">Getting Started</a></li>
-                <li><a href="making-calls.html">Making API Calls</a></li>
-                <li><a href="#">More Fun</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+      head.innerHTML = "Error in the network request:"
+      p.innerHTML = req.statusText;
 
-    <!-- Main jumbotron -->
-    <p class="js"></p>
+      document.body.appendChild(head);
+      document.body.appendChild(p);
+  }
+  
+  
+  </script>
+  
+  
+<!--	<script type="text/javascript"> 
+		var req = new XMLHttpRequest();
+  //var zip = document.getElementById("zip").value;
+  
+  req.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=77450", true);
+	
+  req.addEventListener('load', function(){
+    if(req.status >= 200 && req.status < 400){
+      var res = JSON.parse(req.responseText);
+      var newReq = new XMLHttpRequest();
+		  //var zip = document.getElementById("zip").value;
+		  
+		  newReq.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=1010320", true);
+			
+		  newReq.addEventListener('load', function(){
+			if(newReq.status >= 200 && newReq.status < 400){
+			  var newRes = JSON.parse(newReq.responseText);
+			  
+			  /* Do Stuff With The Response Here */
+			  console.log(newRes);
+			} else {
+			  var head = document.createElement("h2");
+			  var p = document.createElement("p");
 
-      <hr>
+			  head.innerHTML = "Error in the network request:"
+			  p.innerHTML = newReq.statusText;
 
-      <footer>
-		<div class="col-md-10">
-			<p>creatively created by Nicholas Brown</p>
-		</div>
-      </footer>
-	  
-    </div> <!-- /container -->
+			  document.body.appendChild(head);
+			  document.body.appendChild(p);
+			}
+		  });
+		  newReq.send(null);
+	  /* Do Stuff With The Response Here */
+	  console.log(res);
+    } else {
+      var head = document.createElement("h2");
+      var p = document.createElement("p");
 
+      head.innerHTML = "Error in the network request:"
+      p.innerHTML = req.statusText;
 
+      document.body.appendChild(head);
+      document.body.appendChild(p);
+    }
+  });
+  req.send(null);
+	</script> 
+	
+	<script type="text/javascript"> 
+		var req = new XMLHttpRequest();
+  //var zip = document.getElementById("zip").value;
+  
+  req.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=1010320", true);
+	
+  req.addEventListener('load', function(){
+    if(req.status >= 200 && req.status < 400){
+      var res = JSON.parse(req.responseText);
+      
+	  /* Do Stuff With The Response Here */
+	  console.log(res);
+    } else {
+      var head = document.createElement("h2");
+      var p = document.createElement("p");
+
+      head.innerHTML = "Error in the network request:"
+      p.innerHTML = req.statusText;
+
+      document.body.appendChild(head);
+      document.body.appendChild(p);
+    }
+  });
+  req.send(null);
+	</script> -->
+	
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-	var k = "DH7XYYRXG5PNHB8RUHM23GPJ";
 
-	document.addEventListener('DOMContentLoaded', getData);
-
-	function getData(){
-	  
-		//make a new XMLHttpRequest and set up other variables
-		var req = new XMLHttpRequest();
-
-		//open request to OpenWeatherMap
-		req.open("GET", "http://api.amp.active.com/v2/search?query=triathlon&category=events&near=Houston,TX,US&radius=100&api_key=" + k, true);
-		postReq.setRequestHeader('Access-Control-Allow-Origin', 'application/json');
-
-		//add listener for load with to do stuff with response
-		req.addEventListener('load', function(){
-		  //if the status code is good
-		  if(req.status >= 200 && req.status < 400){
-			var results = JSON.parse(req.responseText);
-			//set City name, temp, humidity and current conditions
-			console.log(results);
-			
-		  }
-		  else {
-			//display error information if needed
-			console.log("Error");
-		  }	
-		  
-		  //clear input box for next input
-		});
-		
-		//send the request and prevent form submit's default behavior
-		req.send(null);
-	}
-	  
-
-	</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
