@@ -36,5 +36,6 @@ pre {
 }
 
 .col-md-5 {
+	text-align: center;
 	visibility: hidden;
 }

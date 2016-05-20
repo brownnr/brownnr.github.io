@@ -27,34 +27,76 @@ function getStations(){
 			
 			for(x = 0; x < max; x++){
 			  var station = fRes.fuel_stations[x];
-			  var p = document.createElement("p");
+			  var fuelP = document.createElement("p");
 					
-			  p.innerHTML = "<b>" + station.station_name + "</b><br>" + station.street_address + "<br>" + station.city + ", " + station.state + " " + station.zip + "<br>" + station.station_phone + "<br>";
+			  fuelP.innerHTML = "<b>" + station.station_name + "</b><br>" + station.street_address + "<br>" + station.city + ", " + station.state + " " + station.zip + "<br>" + station.station_phone + "<br>";
 
-			  fuelForm.appendChild(p);
+			  fuelForm.appendChild(fuelP);
 			}
 		  } else {
 			var head = document.createElement("h2");
-			var p = document.createElement("p");
+			var fuelP = document.createElement("p");
 			
 			head.innerHTML = "Error in the network request:"
-			p.innerHTML = fReq.statusText;
+			fuelP.innerHTML = fReq.statusText;
 			
 			document.body.appendChild(head);
-			document.body.appendChild(p);
+			document.body.appendChild(fuelP);
 		  }
 	  });
 		
 	  fReq.send(null);
 	  
+	  var zip = document.getElementById("zip").value;
+  
+	  jQuery.ajax({
+		url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+		success: function(data){
+			var markets = data.results;
+			var max;
+			
+			if(markets.length < 10){
+			  max = markets.length;
+			} else {
+			  max = 10;
+			}
+	
+			for(var x = 0; x < max; x++){
+			  var id = markets[x].id;
+			  var name = markets[x].marketname;
+			  var marketP = document.createElement("p");
+			  
+			  marketP.innerHTML = "<b>" + name.substring(name.indexOf(' ') + 1) + "</b>";
+			  
+			  $.ajax({
+				url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+				async: false,
+				success: function(detail){
+					var addr = detail.marketdetails.Address;
+					var map = detail.marketdetails.GoogleLink;
+					var link = document.createElement("a");
+					
+					link = "<a href='" + map + "' target='_blank'>View Map</a><br>";
+					
+					marketP.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + link + addr;
+					
+					document.body.appendChild(marketP);
+				},
+				error: reqErr,
+			  });
+			  
+			}
+			
+			var reveal = document.getElementsByClassName("col-md-5");
+			for(var x = 0; x < reveal.length; x++){
+			  reveal[x].style.visibility = "visible";
+			}
+			
+		},
+		error: reqErr
+		
+	  });
 	  
-	  
-	  
-	  
-	  var reveal = document.getElementsByClassName("col-md-5");
-	  for(var x = 0; x < reveal.length; x++){
-		  reveal[x].style.visibility = "visible";
-	  }
 	  event.preventDefault();
 	});
 }
