@@ -15,5 +15,7 @@ pre {
 }
 
 #zip, #location {
+	width: 45%;
+	margin: auto;
 	display: inline-block;
 }
