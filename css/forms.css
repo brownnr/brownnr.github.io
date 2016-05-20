@@ -10,7 +10,7 @@ pre {
 	padding-right: 40px;
 }
 
-#formLabel {
+.formLabel {
 	text-align: center;
 }
 
@@ -33,4 +33,8 @@ pre {
 
 .form-group {
 	margin: 0 auto;
+}
+
+.col-md-5 {
+	display: none;
 }
