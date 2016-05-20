@@ -47,6 +47,7 @@ function getStations(){
 		
 	  fReq.send(null);
 	  
+	  // farmers market api stuff
 	  var zip = document.getElementById("zip").value;
   
 	  jQuery.ajax({
@@ -99,4 +100,16 @@ function getStations(){
 	  
 	  event.preventDefault();
 	});
+}
+
+// error function
+function reqErr(data){
+	var head = document.createElement("h2");
+	var p = document.createElement("p");
+
+	head.innerHTML = "Error in the network request:"
+	p.innerHTML = req.statusText;
+
+	document.body.appendChild(head);
+	document.body.appendChild(p);
 }
