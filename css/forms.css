@@ -1,9 +1,15 @@
+/* jumbotron stuff */
+.jumbotron {
+	background-position: top center;
+	background-size: 100%;
+}
+
+/* body stuff */
 pre {
 	display: inline-block;
 	padding-right: 40px;
 }
 
-.jumbotron {
-	background-position: top center;
-	background-size: 100%;
+#formLabel {
+	text-align: center;
 }
