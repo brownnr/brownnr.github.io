@@ -10,9 +10,7 @@ function getStations(){
 	  var loc = document.getElementById("location").value;
 	  var rad = document.getElementById("radius").value;
 		
-	  fReq.open("GET", "https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?
-		api_key=" + k + "&location=" + loc + "&radius=" + rad + "&status=E&access=
-		public&limit=2", true);
+	  fReq.open("GET", "https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=" + k + "&location=" + loc + "&radius=" + rad + "&status=E&access=public&limit=2", true);
 	  fReq.addEventListener('load', function(){
 		
 		  if(fReq.status >= 200 && fReq.status < 400){
