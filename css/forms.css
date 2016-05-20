@@ -13,3 +13,7 @@ pre {
 #formLabel {
 	text-align: center;
 }
+
+#zip, #location {
+	display: inline-block;
+}
