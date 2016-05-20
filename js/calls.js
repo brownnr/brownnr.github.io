@@ -29,9 +29,7 @@ function getStations(){
 			  var station = fRes.fuel_stations[x];
 			  var p = document.createElement("p");
 					
-			  p.innerHTML = "&lt;b&gt" + station.station_name + "&lt;/b&gt&lt;br&gt" + station.street_address
-				+ "&lt;br&gt" + station.city + ", " + station.state + " " + station.zip + "&lt;br&gt" + 
-				station.station_phone + "&lt;br&gt";
+			  p.innerHTML = "<b>" + station.station_name + "</b><br>" + station.street_address + "<br>" + station.city + ", " + station.state + " " + station.zip + "<br>" + station.station_phone + "<br>";
 
 			  fuelForm.appendChild(p);
 			}
