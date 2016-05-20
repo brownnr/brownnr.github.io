@@ -36,5 +36,5 @@ pre {
 }
 
 .col-md-5 {
-	display: none;
+	visibility: hidden;
 }
