@@ -49,6 +49,8 @@ function getStations(){
 	  
 	  // farmers market api stuff
 	  var zip = document.getElementById("zip").value;
+	  var farmForm = document.getElementById("farm");
+
   
 	  jQuery.ajax({
 		url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
@@ -81,7 +83,7 @@ function getStations(){
 					
 					marketP.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + link + addr;
 					
-					document.body.appendChild(marketP);
+					farmForm.appendChild(marketP);
 				},
 				error: reqErr,
 			  });
