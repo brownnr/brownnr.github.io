@@ -20,7 +20,7 @@ function getStations(){
 			var max;
 			
 			if(stations.length - 1 < 10){
-			  max = stations.length - 1;
+			  max = stations.length;
 			} else {
 			  max = 10;
 			}
