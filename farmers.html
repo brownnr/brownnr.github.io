@@ -93,7 +93,7 @@
 		  </ul>
 		  
 		  <h2>Where Can I Find These Markets?</h2>
-		  <p>As you read above, let's see how we can use the market's ids to get a little more details about them. Not much will change in our request, but instead of using <code>zipSearch</code> we'll be using <code>mktDetail</code> in our call. Let's get some more information about this Farmers Market on Grand Parkway, here's our new request:</p>
+		  <p>As you read above, now we're going to see how we can use the market's ids to get a little more details about them. Not much will change in our request, but instead of using <code>zipSearch</code> we'll be using <code>mktDetail</code> in our call. Let's get some more information about this Farmers Market on Grand Parkway, here's our new request:</p>
 		  <pre class="codes">http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=1010320</pre>
 		  <pre class="codes">"marketdetails": {
 	"Address": "1225 West Grand Parkway South, Katy, Texas, Texas, 77494",
@@ -104,7 +104,7 @@
 		  <p>That's a little more useful, isn't it? Now we have the address, even a Google Maps link, a description of the products available, and the schedule. Although, you'll notice the schedule date says 2014, I reassure you this market is still active. For this tutorial, we will only be using the Address and GoogleLink properties.</p>
 		  
 		  <h2>Where Are We Going With All This?</h2>
-		  <p>Now let's see how we can put this all together, with data from our users, to get the data that's relevant to them.</p>			  
+		  <p>Now let's see how we can put this all together and how exactly we get these details and present them to our users.</p>			  
         </div>
       </div>
 	  <div class="row">
