@@ -58,5 +58,5 @@ function getStations(){
 		  reveal[x].style.visibility = "visible";
 	  }
 	  event.preventDefault();
-	}
+	});
 }
