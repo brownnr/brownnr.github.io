@@ -20,6 +20,17 @@ pre {
 	display: inline-block;
 }
 
+#radius {
+	width: 49%;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+#submit {
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
 .form-group {
 	margin: 0 auto;
 }
