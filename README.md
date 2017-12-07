@@ -1,5 +1,4 @@
-# | Nick Brown |
-| :---------------------------------------------------------------------------: |
+<h1 align="center">Nick Brown</h1>
 
 
 [View Site](http://strml.net)
