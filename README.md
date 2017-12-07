@@ -1,7 +1,7 @@
 <h1 align="center">Nick Brown</h1>
 
+<h4 align="center">Welcome to the repo for my portfolio landing page<br>[click here](https://para-programmer.github.io) to view the site</h4>
 
-[View Site](http://strml.net)
 
 Building
 --------
