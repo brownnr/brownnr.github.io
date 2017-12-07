@@ -1,13 +1,12 @@
-/*basic reset*/
-* {
-  margin: 0;
-  padding: 0;
+.glyphicon glyphicon-menu-right{
+	line-height: 1.5;
 }
 
-/*adding a black bg to the body to make things clearer*/
-body {
-  background: black;
+.jumbotron .container p {
+	width: 95%;
 }
-canvas {
-  display: block;
+
+#wh-logo {
+	width: 131.656px;
+	height: 89.531px;
 }
