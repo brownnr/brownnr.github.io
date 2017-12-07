@@ -54,7 +54,7 @@ function getStations(){
 
   
 	  jQuery.ajax({
-		url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+		url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
 		success: function(data){
 			var markets = data.results;
 			var max;
