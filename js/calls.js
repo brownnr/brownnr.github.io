@@ -1,4 +1,5 @@
 var k = "oqMr94lOnVSduMmQu0BIm0cZM5vjsw2ClfDmevFY";
+var fReq = new XMLHttpRequest();
 
 document.addEventListener('DOMContentLoaded', getStations);
 
@@ -6,7 +7,7 @@ function getStations(){
   //add listener for click to submit data
   document.getElementById("submit").addEventListener('click', function(event){
 	  //stuff for alt. fuel stations
-	  var fReq = new XMLHttpRequest();
+	  //var fReq = new XMLHttpRequest();
 	  var loc = document.getElementById("location").value;
 	  var rad = document.getElementById("radius").value;
 		
@@ -111,7 +112,7 @@ function reqErr(data){
 	var p = document.createElement("p");
 
 	head.innerHTML = "Error in the network request:"
-	p.innerHTML = req.statusText;
+	p.innerHTML = fReq.statusText;
 
 	document.body.appendChild(head);
 	document.body.appendChild(p);
