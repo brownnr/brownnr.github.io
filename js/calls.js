@@ -73,7 +73,7 @@ function getStations(){
 			  marketP.innerHTML = "<b>" + name.substring(name.indexOf(' ') + 1) + "</b>";
 			  
 			  $.ajax({
-				url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+				url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
 				async: false,
 				success: function(detail){
 					var addr = detail.marketdetails.Address;
