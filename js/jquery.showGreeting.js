@@ -76,7 +76,7 @@
                             //.css('opacity', 0)
                             .slideUp('1000')
                             .animate({ 
-                                opacity: 1 
+                                display: "inherit" 
                             }, 1500);
                         //$("#world").fadeIn(1000);
                     }else{
