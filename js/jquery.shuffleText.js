@@ -16,11 +16,13 @@
                               "1","2","3","4","5","6","7","8","9","0","-","=","!","@","#","$","%","^","&","*","(",")","_","+","[","]",
                                "{","}","\\","|",";","'",";","\"",",",".","/","<",">","?","`","~");
 
+        var times = Math.floor(Math.random() * (12 - 3) + 3);
+        
         // Defaults Settings
         var defaults = $.extend({
-            time     : 1000,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
+            time     : 80,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
             maxTime  : 150000,  // Max Time In ms (Milliseconds) Of Global Shuffle
-            amount   : 8,     // Amount Of Shuffle For Each Letter
+            amount   : times,     // Amount Of Shuffle For Each Letter
             complete : null   // Do Something When Shuffle Is Completed
         }, options);
 
