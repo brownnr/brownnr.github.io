@@ -14,9 +14,12 @@
         
         // Defaults Settings
         var defaults = $.extend({
-            time     : 40,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
-            amount   : times,     // Amount Of Shuffle For Each Letter
-            complete : null   // Do Something When Shuffle Is Completed
+            time     : 40,              // Time In ms (Milliseconds) Of Shuffle For Each Letter
+            amount   : times,           // Amount Of Shuffle For Each Letter
+            complete : function() {     // Do Something When Shuffle Is Completed
+                        // fade in World! text here
+                        $( "#world" ).fadeIn(1000);
+            }
         }, options);
 
         if(shuffleResult == undefined)
