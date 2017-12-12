@@ -12,15 +12,11 @@
 
         var times = Math.floor(Math.random() * (12 - 3) + 3);
         
-        var func = function(trash) {
-            $("#world").fadeIn(1000);
-        }
-        
         // Defaults Settings
         var defaults = $.extend({
             time     : 40,              // Time In ms (Milliseconds) Of Shuffle For Each Letter
             amount   : times,           // Amount Of Shuffle For Each Letter
-            complete : func             // Do Something When Shuffle Is Completed
+            complete : null             // Do Something When Shuffle Is Completed
         }, options);
 
         if(shuffleResult == undefined)
@@ -65,8 +61,6 @@
                             $this.append($('<span>'+aToShuffle[i]+'</span>'));
                     }
                 }
-
-                console.log(typeof defaults.complete);
                 
                 // The Shuffle Function
                 function randomChars(){
@@ -78,7 +72,8 @@
 
                         clearInterval(interval);
                         
-                        $("#world").fadeIn(1000);
+                        $('#world').stop(true, true).fadeIn({ duration: 1500, queue: false }).css('display', 'none').slideUp(1500);
+                        //$("#world").fadeIn(1000);
                     }else{
                         if(n == defaults.amount){
                             if(iFlag >= aShuffleResult.length)
