@@ -18,8 +18,8 @@
 
         // Defaults Settings
         var defaults = $.extend({
-            time     : 60,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
-            maxTime  : 1500,  // Max Time In ms (Milliseconds) Of Global Shuffle
+            time     : 1000,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
+            maxTime  : 150000,  // Max Time In ms (Milliseconds) Of Global Shuffle
             amount   : 8,     // Amount Of Shuffle For Each Letter
             complete : null   // Do Something When Shuffle Is Completed
         }, options);
