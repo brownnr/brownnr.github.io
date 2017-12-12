@@ -5,13 +5,13 @@ $(document).ready(function() {
 	for (var i = 0; i < 7; i++)
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	
-	text =+ " ";
+	text += " ";
 	
 	for (var x = 0; x < 2; x++) {
 		for (var i = 0; i < 2; i++)
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-		text =+ " ";
+		text += " ";
 	}
 	
 	for (var i = 0; i < 10; i++)
@@ -21,8 +21,8 @@ $(document).ready(function() {
 	
 	var times = Math.floor(Math.random() * (12 - 3) + 3);
 	var target = $('#greeting').shuffleText("Welcome to my portfolio!", {
-		frames: 20,
-		maxSpeed: 1000,
+		frames: 1000,
+		maxSpeed: 1000000,
 		amount: times,
 		complete: null
 	});
