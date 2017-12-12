@@ -19,7 +19,7 @@
             complete : function() {     // Do Something When Shuffle Is Completed
                         // fade in World! text here
                         $( "#world" ).fadeIn(1000);
-            }
+                        }
         }, options);
 
         if(shuffleResult == undefined)
@@ -65,6 +65,8 @@
                     }
                 }
 
+                console.log(typeof defaults.complete);
+                
                 // The Shuffle Function
                 function randomChars(){
                     var randomChars = aChars[Math.floor(Math.random() * aChars.length)];
