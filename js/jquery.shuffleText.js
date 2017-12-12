@@ -11,13 +11,16 @@
         var $this = $(this);
 
         // Add/Remove Chars You Want To Appear During Shuffle In This Array
-        var aChars = new Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+        var aChars = new Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z",
+                               "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+                              "1","2","3","4","5","6","7","8","9","0","-","=","!","@","#","$","%","^","&","*","(",")","_","+","[","]",
+                               "{","}","\\","|",";","'",";","\"",",",".","/","<",">","?","`","~");
 
         // Defaults Settings
         var defaults = $.extend({
-            time     : 40,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
-            maxTime  : 1000,  // Max Time In ms (Milliseconds) Of Global Shuffle
-            amount   : 3,     // Amount Of Shuffle For Each Letter
+            time     : 60,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
+            maxTime  : 1500,  // Max Time In ms (Milliseconds) Of Global Shuffle
+            amount   : 8,     // Amount Of Shuffle For Each Letter
             complete : null   // Do Something When Shuffle Is Completed
         }, options);
 
@@ -64,7 +67,7 @@
                     for(i = 0; i < iLength; i++){
                         if(aToShuffle[i] == undefined)
                             $this.append($('<span></span>'));
-                        else
+                        else 
                             $this.append($('<span>'+aToShuffle[i]+'</span>'));
                     }
                 }
