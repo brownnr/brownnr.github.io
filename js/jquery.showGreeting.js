@@ -1,13 +1,7 @@
-/*
- * Shuffle Text Plugin 1.0.1
- * Created by Anthony Du Pont
- * http://www.anthonydupont.be
- */
-
 (function ($) {
     var isActive = false;
 
-    $.fn.shuffleText = function(shuffleResult, options){
+    $.fn.showGreeting = function(shuffleResult, options){
         var $this = $(this);
 
         // Add/Remove Chars You Want To Appear During Shuffle In This Array
@@ -95,5 +89,9 @@
                 }
             });
         }
+        
+        
+        // fade in World! text here
+        $( "#world" ).fadeIn("slow");
     };
 }(jQuery));
