@@ -9,8 +9,8 @@ $(document).ready(function() {
 	
 	var times = Math.floor(Math.random() * (12 - 3) + 3);
 	var target = $('#greeting').shuffleText("Welcome to my portfolio!", {
-		frames: 60,
-		maxSpeed: 1500,
+		frames: 20,
+		maxSpeed: 1000,
 		amount: times,
 		complete: null
 	});
