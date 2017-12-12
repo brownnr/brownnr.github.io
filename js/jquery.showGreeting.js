@@ -77,7 +77,7 @@
                         $this.text(shuffleResult);
 
                         clearInterval(interval);
-                        if(typeof defaults.complete == 'function')
+                        if(defaults.complete != null)
                             defaults.complete.call($this);
                     }else{
                         if(n == defaults.amount){
