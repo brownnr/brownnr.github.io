@@ -20,8 +20,7 @@
         
         // Defaults Settings
         var defaults = $.extend({
-            time     : 60,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
-            maxTime  : 150000,  // Max Time In ms (Milliseconds) Of Global Shuffle
+            time     : 40,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
             amount   : times,     // Amount Of Shuffle For Each Letter
             complete : null   // Do Something When Shuffle Is Completed
         }, options);
@@ -47,12 +46,7 @@
                 if(defaults.amount < 0)
                     defaults.amount = 0;
 
-                // Calculate Duration Of Global Shuffle
-                if((iLength * (defaults.amount + 1) * defaults.time) > defaults.maxTime){
-                    duration = defaults.maxTime / (iLength * (defaults.amount + 1));
-                }else{
-                    duration = defaults.time;
-                }
+                duration = defaults.time;
 
                 randomChars();
                 interval = setInterval(randomChars,Math.floor(duration));
