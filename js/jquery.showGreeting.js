@@ -12,14 +12,15 @@
 
         var times = Math.floor(Math.random() * (12 - 3) + 3);
         
+        var func = function(trash) {
+            $("#world").fadeIn(1000);
+        }
+        
         // Defaults Settings
         var defaults = $.extend({
             time     : 40,              // Time In ms (Milliseconds) Of Shuffle For Each Letter
             amount   : times,           // Amount Of Shuffle For Each Letter
-            complete : function() {     // Do Something When Shuffle Is Completed
-                        // fade in World! text here
-                        $( "#world" ).fadeIn(1000);
-                        }
+            complete : func             // Do Something When Shuffle Is Completed
         }, options);
 
         if(shuffleResult == undefined)
