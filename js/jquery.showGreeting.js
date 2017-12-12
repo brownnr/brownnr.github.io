@@ -87,6 +87,9 @@
                         }
                     }
                 }
+                
+                // fade in World! text here
+                $( "#world" ).fadeIn("slow");
             });
             
             // fade in World! text here
