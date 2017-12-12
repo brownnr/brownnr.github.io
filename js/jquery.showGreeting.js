@@ -72,7 +72,13 @@
 
                         clearInterval(interval);
                         
-                        $('#world').stop(true, true).fadeIn({ duration: 1500, queue: false }).css('display', 'none').slideUp(1500);
+                        $('#world')
+                            .css('opacity', 0)
+                            .slideUp('1000')
+                            .animate(
+                                { opacity: 1 },
+                                { queue: false, duration: 1000 }
+                            );
                         //$("#world").fadeIn(1000);
                     }else{
                         if(n == defaults.amount){
