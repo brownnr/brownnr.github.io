@@ -77,7 +77,10 @@
                             .slideUp('1000')
                             .animate({ 
                                 opacity: "show" 
-                            }, 1500);
+                            }, {
+                                duration: 1500,
+                                start: $('#world').slideUp('1000')
+                            });
                         //$("#world").fadeIn(1000);
                     }else{
                         if(n == defaults.amount){
