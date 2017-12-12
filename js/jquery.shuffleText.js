@@ -30,7 +30,7 @@
         // Init Variables
         var aToShuffle     = $this.text().split(''),
             aShuffleResult = shuffleResult.split(''),
-            iFlag = 0, n = 0, duration = 0, iLenght = 0,
+            iFlag = 0, n = 0, duration = 0, iLength = 0,
             interval, aLetters;
 
         if(!isActive){
