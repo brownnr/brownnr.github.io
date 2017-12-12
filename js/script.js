@@ -6,9 +6,7 @@ $(document).ready(function() {
 		amount: times,
 		complete: null
 	});
-	
-	// fade in World! text here
-	$( "#world" ).fadeIn(1000);
+
 });
 	
 	
