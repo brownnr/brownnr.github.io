@@ -20,7 +20,7 @@
         
         // Defaults Settings
         var defaults = $.extend({
-            time     : 40,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
+            time     : 20,    // Time In ms (Milliseconds) Of Shuffle For Each Letter
             amount   : times,     // Amount Of Shuffle For Each Letter
             complete : null   // Do Something When Shuffle Is Completed
         }, options);
