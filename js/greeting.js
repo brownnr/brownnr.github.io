@@ -6,7 +6,7 @@
 			"step": 25,				// How many times should the letters be changed
 			"fps": 25,   				// Frames Per Second
 			"text": "Welcome to my portfolio!"	// Use this text instead of the contents
-			"callback": function () {}		// Run once the animation is complete
+			//"callback": function () {}		// Run once the animation is complete
 		},prop)
 
 		return this.each(function() {
@@ -53,8 +53,8 @@
 				var i, len = letters.length, strCopy = str.slice(0); // Fresh copy of the string
 
 				if(start > len) {
-					el.data('animated', false);
-					options.callback(el);
+					//el.data('animated', false);
+					//options.callback(el);
 					return;
 				}
 
