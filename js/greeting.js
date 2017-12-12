@@ -6,11 +6,18 @@
 			"step": 25,				// How many times should the letters be changed
 			"fps": 25,   				// Frames Per Second
 			"text": "Welcome to my portfolio!"	// Use this text instead of the contents
+			"callback": function () {}		// Run once the animation is complete
 		},prop)
 
 		return this.each(function() {
 			var el = $( "#greeting" )[ 0 ],
 				str = options.text.split('');
+			
+			if (el.data('animated')) {
+				return true;
+			}
+			
+			el.data('animated', true);
 
 			// The types array holds the type for each character;
 			// Letters holds the positions of non-space characters;
@@ -46,16 +53,17 @@
 				var i, len = letters.length, strCopy = str.slice(0); // Fresh copy of the string
 
 				if(start > len) {
+					el.data('animated', false);
+					options.callback(el);
 					return;
 				}
 
 				// All the work gets done here
-				for(i=Math.max(start,0); i < len; i++) {
+				for(i = Math.max(start, 0); i < len; i++) {
 
 					// The start argument and options.step limit
 					// the characters we will be working on at once
-
-					if(i < start+options.step) {
+					if(i < start + options.step) {
 						// Generate a random character at this position
 						strCopy[letters[i]] = randomChar(types[letters[i]]);
 					} else {
@@ -66,7 +74,7 @@
 				el.text(strCopy.join(""));
 
 				setTimeout(function() {
-					shuffle(start+1);
+					shuffle(start + 1);
 				}, 1000 / options.fps);
 
 			})(-options.step);
