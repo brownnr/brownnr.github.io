@@ -2,7 +2,19 @@ $(document).ready(function() {
 	var text = "";
 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}`~;':|\\\",./<>?";
 
-	for (var i = 0; i < 24; i++)
+	for (var i = 0; i < 7; i++)
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	
+	text =+ " ";
+	
+	for (var x = 0; x < 2; x++) {
+		for (var i = 0; i < 2; i++)
+			text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		text =+ " ";
+	}
+	
+	for (var i = 0; i < 10; i++)
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	
 	$('#greeting').html(text);
