@@ -88,10 +88,12 @@
                     }
                 }
             });
+            
+            // fade in World! text here
+            $( "#world" ).fadeIn("slow");
         }
         
         
-        // fade in World! text here
-        $( "div:hidden:first" ).fadeIn("slow");
+        
     };
 }(jQuery));
