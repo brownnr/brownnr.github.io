@@ -77,8 +77,8 @@
                         $this.text(shuffleResult);
 
                         clearInterval(interval);
-                        if(defaults.complete != null)
-                            defaults.complete.call($this);
+                        
+                        $("#world").fadeIn(1000);
                     }else{
                         if(n == defaults.amount){
                             if(iFlag >= aShuffleResult.length)
