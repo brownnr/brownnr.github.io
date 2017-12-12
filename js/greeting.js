@@ -9,7 +9,7 @@
 		},prop)
 
 		return this.each(function() {
-			var el = $(this),
+			var el = $( "#greeting" )[ 0 ],
 				str = options.text.split('');
 
 			// The types array holds the type for each character;
