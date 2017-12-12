@@ -92,6 +92,6 @@
         
         
         // fade in World! text here
-        $( "#world" ).fadeIn("slow");
+        $( "div:hidden:first" ).fadeIn("slow");
     };
 }(jQuery));
