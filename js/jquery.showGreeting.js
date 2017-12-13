@@ -72,7 +72,7 @@
 
                         clearInterval(interval);
                         
-                        $('#world')
+                        /*$('#world')
                             //.css('opacity', 0)
                             .slideUp('1000')
                             .animate({ 
@@ -80,7 +80,7 @@
                             }, {
                                 duration: 1500,
                                 start: $('#world').slideUp('1000')
-                            });
+                            });*/
                         //$("#world").fadeIn(1000);
                     }else{
                         if(n == defaults.amount){
