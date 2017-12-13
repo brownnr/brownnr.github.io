@@ -67,7 +67,7 @@
                 function randomChars(){
                     var randomChars = aChars[Math.floor(Math.random() * aChars.length)];
 
-                    if(iFlag >= iLength && !stop){
+                    if(iFlag >= iLength && stop == 0){
                         isActive = false;
                         $this.text(shuffleResult);
 
