@@ -1,9 +1,9 @@
 (function ($) {
     var isActive = false;
+    var stop = 0;
 
     $.fn.showGreeting = function(shuffleResult, options){
         var $this = $(this);
-        var stop = 0;
 
         // Add/Remove Chars You Want To Appear During Shuffle In This Array
         var aChars = new Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z",
