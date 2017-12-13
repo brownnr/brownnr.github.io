@@ -6,6 +6,12 @@ $(document).ready(function() {
 		amount: times,
 		complete: null
 	});
+	
+	target = $('#world').showGreeting("World!", {
+		frames: 1000,
+		amount: times,
+		complete: null
+	});
 
 });
 	
