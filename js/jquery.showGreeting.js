@@ -3,6 +3,7 @@
 
     $.fn.showGreeting = function(shuffleResult, options){
         var $this = $(this);
+        var stop = 0;
 
         // Add/Remove Chars You Want To Appear During Shuffle In This Array
         var aChars = new Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z",
@@ -66,22 +67,18 @@
                 function randomChars(){
                     var randomChars = aChars[Math.floor(Math.random() * aChars.length)];
 
-                    if(iFlag >= iLength){
+                    if(iFlag >= iLength && !stop){
                         isActive = false;
                         $this.text(shuffleResult);
 
                         clearInterval(interval);
+                        stop = 1;
                         
-                        /*$('#world')
-                            //.css('opacity', 0)
-                            .slideUp('1000')
-                            .animate({ 
-                                opacity: "show" 
-                            }, {
-                                duration: 1500,
-                                start: $('#world').slideUp('1000')
-                            });*/
-                        //$("#world").fadeIn(1000);
+                        var target = $('#world').showGreeting("World!", {
+                            frames: 1000,
+                            amount: times,
+                            complete: null
+                        });
                     }else{
                         if(n == defaults.amount){
                             if(iFlag >= aShuffleResult.length)
