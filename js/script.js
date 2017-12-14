@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).onLoad(function() {
 	var times = Math.floor(Math.random() * (12 - 3) + 3);
 	
 	var target = $('#greeting').showGreeting("Hello", {
