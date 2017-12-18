@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-@media screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) {
   #splash {
     width: 100%;
   }
