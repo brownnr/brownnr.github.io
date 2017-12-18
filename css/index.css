@@ -3,6 +3,10 @@
   width: 100vw;
 }
 
+.navbar-right li a {
+  font-size: 2vh;
+}
+
 .jumbotron {
   position: relative;
   text-align: center;
