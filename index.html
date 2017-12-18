@@ -61,8 +61,10 @@
 		
 		<!-- Main jumbotron -->
 		<div class="jumbotron">
-			
-			<img id="splash" src="images/splash2.jpg">
+			<picture>
+				<source media="(max-width: 415px)" srcset="images/splash2-mobile.jpg">
+				<img id="splash" src="images/splash2.jpg">
+			</picture>
 			
 			<div id="welcome" class="container">
 				<p id="greeting"></p>
