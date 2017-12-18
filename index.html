@@ -62,8 +62,12 @@
 		<!-- Main jumbotron -->
 		<div class="jumbotron">
 			<picture>
-				<source media="(max-width: 415px)" srcset="images/splash2-mobile.jpg">
-				<img id="splash" src="images/splash2.jpg">
+				<!-- <source media="(max-width: 415px)" srcset="images/splash2-mobile.jpg"> -->
+				<img srcset="images/splash2-mobile.jpg 160w,
+					     images/splash2.jpg 1276w"
+				     sizes="(max-width: 480px) 480px,
+					    1276px"
+				     src="images/splash2.jpg" alt="Desktop">
 			</picture>
 			
 			<div id="welcome" class="container">
