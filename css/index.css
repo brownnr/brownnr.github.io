@@ -25,6 +25,7 @@
   font-size: 3vh;
   margin: auto;
   text-align: center;
+}
 
 @media screen and (orientation: landscape) {
   #splash {
