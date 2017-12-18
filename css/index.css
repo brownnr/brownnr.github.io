@@ -35,6 +35,29 @@
   text-align: center;
 }
 
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-header {
+  color: white;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  font-family: Rockwell;
+}
+
+hr.divider {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  height: .1vh;
+}
+
+.dropdown-menu>li>a {
+  font-weight: bold;
+  font-family: Rockwell;
+}
+
 @media only screen and (min-width: 414px) {
   #splash {
     width: 100%;
