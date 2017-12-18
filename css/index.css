@@ -41,12 +41,12 @@
 
 .dropdown-header {
   color: white;
-  font-size: 2.5vh;
+  font-size: 2vh;
   font-weight: bolder;
   font-family: Rockwell;
 }
 
-hr.divider {
+.dropdown-menu .divider {
   width: 90%;
   margin: auto;
   background-color: white;
