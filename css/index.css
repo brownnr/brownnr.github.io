@@ -1,3 +1,4 @@
+/* Mobile first */
 .jumbotron {
   position: relative;
   text-align: center;
@@ -12,6 +13,34 @@
 }
 
 #splash {
-  width: 100%;
-  min-width: 986px;
+  width: 600px;
+}
+
+.jumbotron .container .p {
+  font-weight: bold;
+  font-size: 3vh;
+  margin: auto;
+  text-align: center;
+
+@media screen and (orientation: landscape) {
+  #splash {
+    width: 100%
+  }
+}
+
+@media screen and (max-width:700px) {
+
+}
+
+@media (max-width: 480px) {
+  
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+/* STYLES GO HERE */
+  
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
 }
