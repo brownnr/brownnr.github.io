@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (min-width: 414px) {
   #splash {
     width: 100%;
   }
@@ -37,19 +37,4 @@
   }
 }
 
-@media screen and (max-width:700px) {
 
-}
-
-@media (max-width: 480px) {
-  
-}
-
-@media only screen and (min-device-width : 667px) and (max-device-width : 815px) { 
-/* STYLES GO HERE */
-  width: 100vw;
-}
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-
-}
