@@ -74,11 +74,6 @@
                         clearInterval(interval);
                         stop = 1;
                         
-                        var target = $('#world').showGreeting("World!", {
-                            frames: 1000,
-                            amount: times,
-                            complete: null
-                        });
                     }else{
                         if(n == defaults.amount){
                             if(iFlag >= aShuffleResult.length)
