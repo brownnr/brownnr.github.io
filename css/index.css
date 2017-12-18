@@ -1,6 +1,7 @@
 .jumbotron {
   position: relative;
   text-align: center;
+  display: table;
   padding: 0px;
 }
 
