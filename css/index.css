@@ -1,4 +1,8 @@
 /* Mobile first */
+.navbar {
+  width: 100vw;
+}
+
 .jumbotron {
   position: relative;
   text-align: center;
@@ -24,7 +28,11 @@
 
 @media screen and (orientation: landscape) {
   #splash {
-    width: 100%
+    width: 100%;
+  }
+  
+  .navbar {
+    width: 100vw;
   }
 }
 
@@ -36,9 +44,9 @@
   
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+@media only screen and (min-device-width : 667px) and (max-device-width : 815px) { 
 /* STYLES GO HERE */
-  
+  width: 100vw;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
