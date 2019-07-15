@@ -140,6 +140,7 @@ sup {
   top: -.5em; }
 
 a {
+  z-index:9999999;
   color: #79efb4;
   text-decoration: none;
   background-color: transparent;
