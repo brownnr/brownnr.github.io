@@ -8206,9 +8206,13 @@ textarea.form-control {
 .heading-section h2 {
   font-weight: 700;
   font-size: 40px; }
+  
+.author-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right; }
 
 .img,
-.author-img,
 .logo-img,
 .user-img {
   background-size: cover;
